@@ -1,3 +1,146 @@
+* {
+    font-family: "Roboto", sans-serif;
+  }
+  
+nav {
+    background-color: rgba(17, 18, 21, 0.85);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center; 
+}
+
+.navbar-brand {
+    margin-left: 16px; 
+}
+
+body {
+    background-image: url('/assets/images/bg1.jpg');
+
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+/* Ganti foto background dengan mengganti url di background-image.
+     Contoh: 
+     url('./public/assets/img/bg2.jpg')
+     atau gunakan file foto lain sesuai kebutuhan.
+*/
+
+  
+
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  color:rgb(255, 0, 0);
+  letter-spacing: 2px;
+
+}
+
+span.v1 {
+  color:rgb(255, 0, 0);
+}
+
+
+.halaman-login{
+  background:rgba(17, 18, 21, 0.85);
+  color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  border: none;
+  width: 400px;
+  
+}
+
+.logo-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+
+}
+
+
+.container.card-shadow {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
 
 
+
+.card .card-title {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(220,53,69,0.10);
+  letter-spacing: 1.5px;
+}
+.card .text-danger {
+  color: #8E1616 ;
+}
+.input-group-text {
+  background: #232526;
+  color: #8E1616;
+  border: none;
+}
+.form-control {
+  background: #232526;
+  color: #fff;
+  border: none;
+  box-shadow: none ;
+}
+.form-control:focus {
+  background: #232526;
+  color: #fff;
+  border: 1px solid #8E1616;
+  box-shadow: 0 0 0 0.2rem rgba(220,53,69,0.15);
+}
+.btn-danger {
+  background: #8E1616;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.btn-danger:hover, .btn-danger:focus {
+  background: #8E1616;
+}
+.btn-outline-light {
+  border: 1.5px solid #fff;
+  color: #fff;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-light:hover, .btn-outline-light:focus {
+  background: #fff;
+  color: #232526;
+}
+.rounded-circle {
+  border-radius: 50% ;
+}
+
+
+@media (max-width: 576px) {
+  .card {
+    padding: 1.5rem ;
+    border-radius: 16px;
+  }
+  .navbar-brand {
+    font-size: 2rem;
+  }
+
+
+}

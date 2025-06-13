@@ -1,23 +1,23 @@
 <?php
- if (isset($_POST["login"])) {
-     if ($_POST["username"] == "1" && $_POST["password"] == "1") {
-         header("Location: ./admin/php/home.php ");
-         exit;
-     } else {
-         $error = true;
-     }
- }
+session_start();
 
- if (isset($_POST["login"])) {
-     if ($_POST["username"] == "user" && $_POST["password"] == ".") {
-         header("Location: ./public/php/home.php ");
-         exit;
-     } else {
-         $error = true;
-     }
- }
+if (isset($_POST["login"])) {
+  $username = $_POST["username"];
+  $password = $_POST["password"];
 
 
+  if (
+    ($username === "1" && $password === "1") ||
+    ($username === "user" && $password === ".")
+  ) {
+    $_SESSION['login'] = true;
+    $_SESSION['username'] = $username;
+    header("Location: ./pages/home.php");
+    exit;
+  } else {
+    $error = true;
+  }
+}
 ?>
 
 
@@ -41,13 +41,48 @@
 
 
 
+
+* {
+    font-family: "Roboto", sans-serif;
+  }
+  
+nav {
+    background-color: rgba(17, 18, 21, 0.85);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center; 
+}
+
+
+
+body {
+    background-image: url('./assets/img/bg2.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+  
+
+
 .navbar-brand {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: bold;
   color:rgb(255, 0, 0);
   letter-spacing: 2px;
-
+  margin-left :30px
 }
+
 
 span.v1 {
   color:rgb(255, 0, 0);
@@ -159,52 +194,63 @@ span.v1 {
   </nav>
 
   <!-- Halaman Login -->
-  <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class=" halaman-login  card shadow-lg ">
-      <div class="card-body">
-        <div class="text-center mb-4">
-          <div>
-            <img class="logo-logo" src="./CSS/img/logo.png" alt="Movix Logo">
-          </div>
-          <h3 class="card-title mt-3 fw-bold">
-            Login to <span class="v1">Movix</span>
-          </h3>
-          <p class="text-secondary small mb-0">Masuk untuk menikmati film favoritmu</p>
-        </div>
-        <form method="post" action="" autocomplete="off">
-          <div class="mb-3">
-            <label for="username" class="form-label fw-semibold">Username</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-person"></i></span>
-              <input type="text" class="form-control" id="username" name="username" required autofocus placeholder="Masukkan username">
+<div class="d-flex justify-content-center align-items-center login-bg" style="min-height: 80vh;">
+    <div class="halaman-login card shadow-lg animate__animated animate__fadeInDown" style="width:320px; padding: 1.2rem 1.2rem;">
+        <div class="card-body p-3">
+            <div class="text-center mb-3">
+                <div>
+                    <img class="logo-logo animate__animated animate__pulse animate__infinite" src="./assets/img/logo1.png" alt="Movix Logo" style="width:60px; height:60px;">
+                </div>
+                <h4 class="card-title mt-2 fw-bold" style="font-size:1.3rem;">
+                    Login to <span class="v1">Movix</span>
+                </h4>
+                <p class="text-secondary small mb-0" style="font-size:0.9rem;">Masuk untuk menikmati film favoritmu</p>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label fw-semibold">Password</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-lock"></i></span>
-              <input type="password" class="form-control" id="password" name="password" required placeholder="Masukkan password">
-              
+            <?php if (isset($error)) : ?>
+                <div class="alert alert-danger py-2 text-center animate__animated animate__shakeX" role="alert" style="font-size:0.95rem;">
+                    Username atau password salah!
+                </div>
+            <?php endif; ?>
+            <form method="post" action="" autocomplete="off">
+                <div class="mb-2">
+                    <label for="username" class="form-label fw-semibold" style="font-size:0.95rem;">Username</label>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" id="username" name="username" required autofocus placeholder="Masukkan username" style="font-size:0.95rem;">
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="password" class="form-label fw-semibold" style="font-size:0.95rem;">Password</label>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" id="password" name="password" required placeholder="Masukkan password" style="font-size:0.95rem;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger w-100 mb-2 fw-bold shadow-sm animate__animated animate__pulse" name="login" style="font-size:1rem; padding:0.4rem 0;">Login</button>
+            </form>
+            <div class="text-center mt-2">
+                <small class="text-secondary" style="font-size:0.9rem;">Atau login dengan</small>
+                <div class="d-flex justify-content-center gap-2 mt-2">
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center animate__animated animate__bounceIn" title="Google" style="width:28px; height:28px;"><i class="bi bi-google"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center animate__animated animate__bounceIn" title="Facebook" style="width:28px; height:28px;"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center animate__animated animate__bounceIn" title="Twitter" style="width:28px; height:28px;"><i class="bi bi-twitter"></i></a>
+                </div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-danger w-100 mb-2 fw-bold shadow-sm" name="login">Login</button>
-        </form>
-        <div class="text-center mt-3">
-          <small class="text-secondary">Atau login dengan</small>
-          <div class="d-flex justify-content-center gap-3 mt-2">
-            <a href="#" class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center" title="Google"><i class="bi bi-google"></i></a>
-            <a href="#" class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center" title="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center" title="Twitter"><i class="bi bi-twitter"></i></a>
-          </div>
+            <div class="text-center mt-3">
+                <small style="font-size:0.9rem;">Belum punya akun? <a href="./pages/daftar.php" class="text-danger text-decoration-none fw-semibold">Daftar di sini</a></small>
+            </div>
         </div>
-        <div class="text-center mt-4">
-          <small>Belum punya akun? <a href="/daftar.php" class="text-danger text-decoration-none fw-semibold">Daftar di sini</a></small>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+<!-- Animate.css CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
+           
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+
 
 </body>
 </html>
