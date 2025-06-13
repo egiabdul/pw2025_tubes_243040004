@@ -98,6 +98,136 @@
             font-size: 25px;
             line-height: 1.9;
         }
+
+        /* Hamburger menu custom style */
+        .navbar-toggler {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            padding: 0.4rem 0.7rem;
+            background: transparent;
+            transition: background 0.2s;
+        }
+        .navbar-toggler:focus {
+            background: rgba(233,69,96,0.08);
+        }
+        .navbar-toggler-icon {
+            width: 2rem;
+            height: 2rem;
+            background-image: none;
+            position: relative;
+            display: inline-block;
+        }
+        .navbar-toggler-icon span,
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: #e94560;
+            border-radius: 2px;
+            margin: 6px 0;
+            transition: all 0.3s;
+        }
+        .navbar-toggler-icon span {
+            margin: 0;
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon::before {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon::after {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon span {
+            opacity: 0;
+        }
+
+        /* Responsive hamburger for mobile */
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                margin: 0 1rem;
+                background: rgba(34,40,49,0.97);
+                border-radius: 0 0 16px 16px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+                padding: 1rem 0.5rem;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-brand {
+                margin-left: 0.5rem;
+                font-size: 1.5rem;
+            }
+            .profile-circle {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .carousel-caption h5 {
+                font-size: 1.3rem;
+                margin-top: 10px;
+            }
+            .carousel-caption p {
+                font-size: 1rem;
+                width: 90%;
+            }
+            .carousel-item {
+                height: 350px;
+            }
+            .section-padding {
+                padding: 2rem 0 !important;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+        }
+        @media (max-width: 767.98px) {
+            .carousel-caption {
+                bottom: 30px;
+                padding: 0 10px;
+            }
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            .carousel-caption p {
+                font-size: 0.9rem;
+                width: 100%;
+            }
+            .navbar-nav .nav-link {
+                margin-right: 0.5rem;
+                font-size: 1rem;
+            }
+            .container, .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .row-cols-md-3 > * {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .card-img-top {
+                height: 180px;
+                object-fit: cover;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .carousel-item {
+                height: 220px;
+                min-height: 120px;
+            }
+            .carousel-caption {
+                bottom: 10px;
+                padding: 0 5px;
+            }
+            .profile-circle {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            .footer .container {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -126,9 +256,9 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
                         <li><a class="dropdown-item" href="profil.php">Profil</a></li>
-                        <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                        <li><a class="dropdown-item" href="./pengaturan.php">Pengaturan</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/logout.php">Keluar</a></li>
+                        <li><a class="dropdown-item" href="../index.php">Keluar</a></li>
                     </ul>
                 </div>
             </div>
@@ -349,8 +479,8 @@
                     <div class="mb-2">
                         <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+                        <a href="https://www.instagram.com/egiabdulaziz_/" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Egiabdul47" class="text-white"><i class="bi bi-youtube"></i></a>
                     </div>
                     <div>
                         &copy; <?= date('Y') ?> Movix. All Rights Reserved.

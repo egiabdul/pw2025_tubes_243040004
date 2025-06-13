@@ -121,5 +121,20 @@ if (isset($_POST["register"])) {
     </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="text-center py-4 mt-5" style="background: rgba(17,18,21,0.85); color: #fff; backdrop-filter: blur(6px); border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="container">
+      <div class="mb-2">
+        <a href="#" class="text-danger me-2" style="font-size:1.3rem;"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-danger me-2" style="font-size:1.3rem;"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="text-danger me-2" style="font-size:1.3rem;"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="text-danger" style="font-size:1.3rem;"><i class="bi bi-tiktok"></i></a>
+      </div>
+      <div style="font-size:0.98rem;">
+        &copy; <?= date('Y') ?> <span class="fw-bold text-danger">Movix</span>. All Rights Reserved.<br>
+        <span style="font-size:0.85rem; color:#bbb;">Temukan film favoritmu hanya di Movix!</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
